@@ -1,8 +1,7 @@
-// src/components/layouts/DashboardLayout.tsx
 import { ReactNode } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useUserStore } from '@/stores/useUserStore';
 import { Button } from '@/components/ui/button';
-import { useNavigate } from 'react-router-dom';
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -22,12 +21,22 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       <nav className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
-            <div className="flex">
-              <div className="flex items-center">
-                <h1 className="text-xl font-bold text-gray-900">
-                  Plateforme d'investissement
-                </h1>
-              </div>
+            <div className="flex items-center space-x-4">
+              <h1 className="text-xl font-bold text-gray-900">
+                Plateforme d'investissement
+              </h1>
+              <Button 
+                variant="ghost" 
+                onClick={() => navigate('/dashboard')}
+              >
+                Dashboard
+              </Button>
+              <Button 
+                variant="ghost" 
+                onClick={() => navigate('/profile')}
+              >
+                Profil
+              </Button>
             </div>
             <div className="flex items-center space-x-4">
               <span className="text-gray-600">

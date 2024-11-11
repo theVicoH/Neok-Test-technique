@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import CreateProfilePage from './pages/CreateProfilePage';
+import ProfilePage from './pages/ProfilePage';
 import Dashboard from './components/features/Dashboard';
 import AuthGuard from './components/features/AuthGuard';
 
@@ -22,6 +23,14 @@ export default function App() {
           element={
             <AuthGuard>
               <Dashboard />
+            </AuthGuard>
+          }
+        />
+        <Route 
+          path="/profile" 
+          element={
+            <AuthGuard>
+              <ProfilePage />
             </AuthGuard>
           }
         />
