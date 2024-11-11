@@ -1,50 +1,41 @@
-# React + TypeScript + Vite
+# Plateforme d'Investissement Virtuel
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Une plateforme de simulation de trading permettant d'investir virtuellement dans l'or (Au) et l'argent (Ag), avec des prix qui fluctuent en temps réel.
 
-Currently, two official plugins are available:
+## 🚀 Fonctionnalités
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 💰 Investissement virtuel avec un solde initial de 10,000€
+- 📊 Prix en temps réel pour l'Or et l'Argent
+- 🔄 Achat et vente de métaux précieux
+- 👤 Système d'authentification et profils utilisateurs
+- 📈 Historique des transactions
 
-## Expanding the ESLint configuration
+## 🛠️ Technologies Utilisées
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **React + TypeScript** - Framework Frontend
+- **Tailwind CSS** - Styling
+- **Shadcn/UI** - Composants UI
+- **Zustand** - Gestion d'état
+- **React Router** - Navigation
+- **Recharts** - Visualisation de données
+- **Zod** - Validation des formulaires
 
-- Configure the top-level `parserOptions` property like this:
+## 🚦 Mise en Route
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+1. Installer les dépendances
+```bash
+npm install
+```
+ou
+```bash
+pnpm install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+2. Lancer l'application
+```bash
+npm run dev
+```
+ou
+```bash
+pnpm run dev
 ```
