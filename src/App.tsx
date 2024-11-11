@@ -1,12 +1,23 @@
-import { Button } from "./components/ui/button"
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { LoginPage } from './pages/LoginPage';
+import { Dashboard } from './components/features/Dashboard';
+import { AuthGuard } from './components/features/AuthGuard';
 
-function App() {
-
+export default function App() {
   return (
-    <>
-      <Button />
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="/dashboard"
+          element={
+            <AuthGuard>
+              <Dashboard />
+            </AuthGuard>
+          }
+        />
+        <Route path="/" element={<Navigate to="/login" replace />} />
+      </Routes>
+    </Router>
+  );
 }
-
-export default App
