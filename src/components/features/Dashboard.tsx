@@ -12,7 +12,7 @@ const INITIAL_PRICE_DATA: PriceData = {
   Ag: { current: 25, history: [] }
 };
 
-export function Dashboard() {
+export default function Dashboard() {
   const { user, addTransaction, updateBalance, updateAsset } = useUserStore();
   const [amount, setAmount] = useState('');
   const [selectedAsset, setSelectedAsset] = useState<AssetType>('Au');

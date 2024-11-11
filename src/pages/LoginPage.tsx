@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useUserStore } from '@/stores/useUserStore';
 
-export function LoginPage() {
+export default function LoginPage() {
   const [username, setUsername] = useState('');
   const login = useUserStore((state) => state.login);
   const navigate = useNavigate();

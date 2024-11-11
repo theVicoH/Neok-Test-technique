@@ -1,11 +1,24 @@
 export type AssetType = 'Au' | 'Ag';
 
+export type ExperienceLevel = 'beginner' | 'intermediate' | 'expert';
+export type RiskProfile = 'conservative' | 'moderate' | 'aggressive';
+
+export interface Profile {
+  firstName: string;
+  lastName: string;
+  email: string;
+  experience: ExperienceLevel;
+  riskProfile: RiskProfile;
+  createdAt: Date;
+}
+
 export interface User {
   id: string;
   username: string;
   balance: number;
   assets: Record<AssetType, number>;
   transactions: Transaction[];
+  profile: Profile | null;
 }
 
 export interface Transaction {

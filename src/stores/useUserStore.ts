@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { User, Transaction, AssetType } from '../types/types';
+import { User, Transaction, AssetType, Profile } from '../types/types';
 
 interface UserStore {
   user: User | null;
@@ -9,11 +9,13 @@ interface UserStore {
   addTransaction: (transaction: Omit<Transaction, 'id' | 'date'>) => void;
   updateBalance: (amount: number) => void;
   updateAsset: (asset: AssetType, amount: number) => void;
+  updateProfile: (profile: Omit<Profile, 'createdAt'>) => void;
+  hasProfile: () => boolean;
 }
 
 export const useUserStore = create<UserStore>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       user: null,
       login: (username: string) => set({
         user: {
@@ -24,7 +26,8 @@ export const useUserStore = create<UserStore>()(
             Au: 0,
             Ag: 0
           },
-          transactions: []
+          transactions: [],
+          profile: null
         }
       }),
       logout: () => set({ user: null }),
@@ -55,7 +58,20 @@ export const useUserStore = create<UserStore>()(
             [asset]: (state.user.assets[asset] || 0) + amount
           }
         } : null
-      }))
+      })),
+      updateProfile: (profileData) => set((state) => ({
+        user: state.user ? {
+          ...state.user,
+          profile: {
+            ...profileData,
+            createdAt: new Date()
+          }
+        } : null
+      })),
+      hasProfile: () => {
+        const state = get();
+        return state.user?.profile !== null;
+      }
     }),
     {
       name: 'user-storage'
